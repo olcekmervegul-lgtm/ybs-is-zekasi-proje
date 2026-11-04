@@ -1,0 +1,33 @@
+[0m18:31:43.065357 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106b69ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10912b760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10912b580>]}
+
+
+============================== 18:31:43.068686 | 78f7f2d4-c619-42cd-8c81-cb0d3c6289d2 ==============================
+[0m18:31:43.068686 [info ] [MainThread]: Running with dbt=1.10.23
+[0m18:31:43.069054 [debug] [MainThread]: running dbt with arguments {'warn_error': 'None', 'quiet': 'False', 'profiles_dir': '/Users/mervegulolcek/.dbt', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'static_parser': 'True', 'partial_parse': 'True', 'debug': 'False', 'empty': 'None', 'invocation_command': 'dbt init nova_dbt', 'fail_fast': 'False', 'write_json': 'True', 'version_check': 'True', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'log_format': 'default', 'no_print': 'None', 'printer_width': '80', 'log_path': 'logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'target_path': 'None', 'log_cache_events': 'False', 'use_experimental_parser': 'False'}
+[0m18:31:43.078524 [warn ] [MainThread]: [[33mWARNING[0m]: This version of dbt is deprecated and no longer receives regular patches, including for known bugs. Please upgrade to a newer supported version of dbt for new projects: https://docs.getdbt.com/docs/dbt-versions?utm_source=dbt-cli
+[0m18:31:43.078822 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecated_version_invocation', 'label': '78f7f2d4-c619-42cd-8c81-cb0d3c6289d2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10912b760>]}
+[0m18:31:43.079173 [info ] [MainThread]: Creating dbt configuration folder at /Users/mervegulolcek/.dbt
+[0m18:31:43.080430 [debug] [MainThread]: Starter project path: /Users/mervegulolcek/Library/Python/3.9/lib/python/site-packages/dbt/include/starter_project
+[0m18:31:43.085401 [info ] [MainThread]: 
+Your new dbt project "nova_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m18:31:43.085685 [info ] [MainThread]: Setting up your profile.
+[0m18:49:23.535111 [info ] [MainThread]: Profile nova_dbt written to /Users/mervegulolcek/.dbt/profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m18:49:23.539529 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 641.78143, "process_in_blocks": "0", "process_kernel_time": 0.231286, "process_mem_max_rss": "104497152", "process_out_blocks": "0", "process_user_time": 0.906122}
+[0m18:49:23.539949 [debug] [MainThread]: Command `python -m dbt.cli.main init` succeeded at 18:49:23.539863 after 641.78 seconds
+[0m18:49:23.540339 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106b69ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109109fa0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1094424c0>]}
+[0m18:49:23.540989 [debug] [MainThread]: Flushing usage events
+[0m18:49:24.441600 [debug] [MainThread]: An error was encountered while trying to flush usage events
