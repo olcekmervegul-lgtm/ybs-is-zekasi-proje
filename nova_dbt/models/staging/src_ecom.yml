@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: main
+    tables:
+      - name: raw_ecom_churn
+      - name: raw_inflation
