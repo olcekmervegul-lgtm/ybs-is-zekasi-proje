@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: fct_customer_churn
+    description: "Alışveriş seviyesinde tablo. Her satır bir alışveriş; alışverişin yapıldığı ayın ortalama enflasyon beklentisi (FRED T10YIE) ile birleştirildi."
+    columns:
+      - name: purchase_id
+        description: "Her alışverişin benzersiz numarası"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Alışverişi yapan müşterinin numarası"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: is_churn
+        description: "1 = müşteri terk etti, 0 = devam ediyor"
+        tests:
+          - accepted_values:
+              values: [0, 1]
+      - name: monthly_inflation_rate
+        description: "Alışverişin yapıldığı ayın ortalama 10 yıllık enflasyon beklentisi (%)"
+        tests:
+          - not_null
+
+  - name: dim_customers
+    description: "Müşteri seviyesinde tablo. Her satır bir müşteri; RFM (Recency, Frequency, Monetary) metrikleri ile."
+    columns:
+      - name: customer_id
+        description: "Müşterinin benzersiz numarası"
+        tests:
+          - unique
+          - not_null
+      - name: recency_days
+        description: "Son alışverişten veri setinin son gününe kadar geçen gün sayısı"
+      - name: frequency
+        description: "Müşterinin toplam alışveriş sayısı"
+      - name: monetary
+        description: "Müşterinin toplam harcama tutarı"
+      - name: is_churn
+        description: "1 = terk etti, 0 = aktif"
+        tests:
+          - not_null
