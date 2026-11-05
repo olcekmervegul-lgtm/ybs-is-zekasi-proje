@@ -1,0 +1,7 @@
+nova_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../nova.duckdb
+      schema: main
