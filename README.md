@@ -39,21 +39,23 @@ Ham alışveriş verisi 13 sütundan oluşur (müşteri, alışveriş tarihi, ü
 │   └── analiz.ipynb      # analiz ve raporlama notebook
 ├── docs/
 │   └── dbt_docs.html     # üretilmiş dbt dokümantasyonu
-├── dashboard/            # dashboard ekran görüntüleri ve PDF çıktısı
+├── dashboard/            # dashboard ekran görüntüleri
 ├── nova.duckdb           # DuckDB veritabanı
 └── README.md
 ```
 
 ## dbt projesi
 
-Projede 4 model ve 9 veri testi vardır, testlerin hepsi geçer.
+Projede 6 model ve 9 veri testi vardır, testlerin hepsi geçer.
 
 | Katman | Model | Ne yapar |
 |---|---|---|
 | staging | `stg_ecom_customers` | Ham alışveriş verisini okur, sütunları yeniden adlandırır ve doğru türlere çevirir |
 | staging | `stg_daily_inflation` | Günlük enflasyon verisini tarihe çevirir, boş değerleri ayıklar, ay bilgisini üretir |
+| staging | `stg_ecom_orders` | Ham veriden sipariş bilgilerini seçer, `fct_customer_summary` tablosunu besler |
 | marts | `fct_customer_churn` | Her satır bir alışveriş. Alışverişin yapıldığı ayın ortalama enflasyon beklentisiyle birleştirilir |
 | marts | `dim_customers` | Her satır bir müşteri. Recency, frequency, monetary (RFM) metrikleri ve churn bilgisi |
+| marts | `fct_customer_summary` | Müşteri başına sipariş sayısı, toplam harcama ve ortalama sepet |
 
 Temel hazırlık kararları:
 
@@ -63,7 +65,7 @@ Temel hazırlık kararları:
 - Enflasyon günlük olduğundan, alışverişlerle birleştirilmeden önce aylık ortalamaya çevrildi.
 - Churn bilgisi kaynakta müşteri düzeyindedir (bir müşterinin tüm alışverişlerinde aynı değer). Bu yüzden churn oranı, farklı müşteri sayısı üzerinden hesaplanır.
 
-Sütun açıklamaları, test listesi ve model ayrıntıları [dbt README](nova_dbt/README.md) dosyasındadır.
+Sütun açıklamaları (veri sözlüğü), test listesi ve model ayrıntıları [dbt README](nova_dbt/README.md) dosyasındadır.
 
 ### Nasıl çalıştırılır
 
@@ -87,7 +89,7 @@ Analiz notebook `notebook/analiz.ipynb` dosyasında bulunur.
 
 ## Dashboard
 
-Looker Studio raporu üç sayfadan oluşur. Ekran görüntüleri ve PDF çıktısı `dashboard/` klasöründedir.
+Looker Studio raporu üç sayfadan oluşur. Ekran görüntüleri `dashboard/` klasöründedir.
 
 **Sayfa 1: Müşteri ve Churn Analizi.** Churn oranı, toplam müşteri, toplam harcama, kategoriye göre aylık harcama, cinsiyete ve yaş grubuna göre churn oranı.
 
@@ -100,8 +102,6 @@ Looker Studio raporu üç sayfadan oluşur. Ekran görüntüleri ve PDF çıktı
 **Sayfa 3: Satın Alma Davranışı.** Alışveriş sayısı, ortalama sepet ve iade oranı, ödeme yöntemine ve kategoriye göre harcama payı, kategori ve ödeme yöntemi kırılımı.
 
 ![Sayfa 3](dashboard/sayfa3_satin_alma.png)
-
-Tüm sayfaların PDF çıktısı: [dashboard.pdf](dashboard/dashboard.pdf)
 
 Ana göstergeler (dbt tablolarıyla doğrulanmıştır):
 
