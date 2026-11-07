@@ -6,4 +6,4 @@ SELECT
     "Total Purchase Amount" AS total_purchase_amount,
     "Payment Method" AS payment_method,
     "Purchase Date" AS purchase_date
-FROM raw_ecom_churn
+FROM {{ source('main', 'raw_ecom_churn') }}
