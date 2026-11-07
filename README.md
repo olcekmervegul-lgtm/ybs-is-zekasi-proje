@@ -39,7 +39,7 @@ Ham alışveriş verisi 13 sütundan oluşur (müşteri, alışveriş tarihi, ü
 │   └── analiz.ipynb      # analiz ve raporlama notebook
 ├── docs/
 │   └── dbt_docs.html     # üretilmiş dbt dokümantasyonu
-├── dashboard/            # dashboard ekran görüntüleri ve PDF çıktısı
+├── dashboard/            # dashboard ekran görüntüleri 
 ├── nova.duckdb           # DuckDB veritabanı
 └── README.md
 ```
@@ -87,7 +87,7 @@ Analiz notebook `notebook/analiz.ipynb` dosyasında bulunur.
 
 ## Dashboard
 
-Looker Studio raporu üç sayfadan oluşur. Ekran görüntüleri ve PDF çıktısı `dashboard/` klasöründedir.
+Looker Studio raporu üç sayfadan oluşur. Ekran görüntüleri  `dashboard/` klasöründedir.
 
 **Sayfa 1: Müşteri ve Churn Analizi.** Churn oranı, toplam müşteri, toplam harcama, kategoriye göre aylık harcama, cinsiyete ve yaş grubuna göre churn oranı.
 
@@ -101,7 +101,6 @@ Looker Studio raporu üç sayfadan oluşur. Ekran görüntüleri ve PDF çıktı
 
 ![Sayfa 3](dashboard/sayfa3_satin_alma.png)
 
-Tüm sayfaların PDF çıktısı: [dashboard.pdf](dashboard/dashboard.pdf)
 
 Ana göstergeler (dbt tablolarıyla doğrulanmıştır):
 
