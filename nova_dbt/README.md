@@ -5,6 +5,18 @@ E-ticaret müşteri alışveriş verisini temizleyen, FRED enflasyon beklentisi 
 Bu klasör projenin dbt kısmıdır. Ham CSV dosyaları DuckDB'ye yüklenir (`raw_` tabloları), dbt ile temizlenir (`stg_` modelleri) ve analize hazır tablolara dönüştürülür (`fct_` ve `dim_` modelleri).
 
 Akış: `raw_ecom_churn` + `raw_inflation` → staging (`stg_`) → marts (`fct_` / `dim_`) → dashboard
+mermaid
+flowchart LR
+    A[(raw_ecom_churn)] --> B[stg_ecom_customers]
+    A --> C[stg_ecom_orders]
+    D[(raw_inflation)] --> E[stg_daily_inflation]
+    B --> F[fct_customer_churn]
+    E --> F
+    F --> G[dim_customers]
+    C --> H[fct_customer_summary]
+    F --> I[Looker Studio dashboard]
+    G --> I
+    
 
 ## Veri kaynakları
 
